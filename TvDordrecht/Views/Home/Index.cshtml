@@ -1,0 +1,66 @@
+﻿@model HomeIndexViewModel
+
+@{
+	ViewData["Title"] = "Nieuws";
+}
+
+<h2>Laatste nieuws</h2>
+<div class="row">
+	@foreach (var news in Model.News)
+	{
+		<div class="col-sm-4 mb-3">
+			<img src="https://www.tvdordrecht.nl/media/@news.ImagePath" class="card-img-top" style="width: 100%; height: 15vw;object-fit: cover;">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title text-truncate">@news.Title</h4>
+					<div class="card-text" style="height: 5vw">
+						@Html.Raw(news.Text)
+					</div>
+					<small>@news.DateTime.GetValueOrDefault().ToString("d MMMM yyyy")</small>
+				</div>
+				<a href="/News/Details/@news.Id" class="stretched-link"></a>
+			</div>
+		</div>
+	}
+</div>
+
+<h2>Trainingen</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Dag / datum / tijd</th>
+			<th scope="col">Discipline</th>
+			<th scope="col">Locatie</th>
+			<th scope="col">Trainer</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var training in Model.Training)
+		{
+			<tr>
+				<td scope="col">@training.DateTime.ToLocalTime().ToLongDateString() @training.DateTime.ToLocalTime().ToShortTimeString()</td>
+				<td scope="col">@training.Discipline</td>
+				<td scope="col">@training.Location</td>
+				<td scope="col">@training.Trainer</td>
+				<td scope="col">
+					@if (training.Discipline == "Zwemtraining")
+					{
+						<a class="link-danger" href="/training.pdf" download>
+							<i class="bi bi-download"></i>
+						</a>
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<style>
+	.card-text{
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>
