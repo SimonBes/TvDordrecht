@@ -29,26 +29,44 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Training</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Zwemtest</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                Zwemtest
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" asp-controller="SwimTests" asp-action="Index">Besttijden</a></li>
+                                <li><a class="dropdown-item" asp-controller="SwimTests" asp-action="Index">Deelnemers</a></li>
+                                <li><a class="dropdown-item" asp-controller="SwimTests" asp-action="Index">Zwemtesten</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                Wedstrijd
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" asp-controller="Competitions" asp-action="Index">Wie wat waar</a></li>
+                                <li><a class="dropdown-item" asp-controller="Competitions" asp-action="Index">Uitslagen</a></li>
+                                <li><a class="dropdown-item" asp-controller="Competitions" asp-action="Index">Evenementen</a></li>
+                                <li><a class="dropdown-item" asp-controller="Competitions" asp-action="Index">Tips&Tricks</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Wedstrijd</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Over ons</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="About">Over ons</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://dordtsebiesboschtriathlon.nl/Home/" target="_blank">Dordtse Biesbosch Triathlon</a>
                         </li>
                     </ul>
-                    <button class="btn btn-outline-light" type="submit"><i class="bi bi-person"></i> Login</button>
+                    <button class="btn btn-outline-light" type="submit"><i class="bi bi-person"></i> Aanmelden</button>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <h2>@ViewBag.Title</h2>
+            <h5>@ViewBag.Subtitle</h5>
+            <hr />
             @RenderBody()
         </main>
     </div>

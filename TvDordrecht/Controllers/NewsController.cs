@@ -5,16 +5,10 @@ using TvDordrecht.Models;
 
 namespace TvDordrecht.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController(TvdContext context, ILogger<NewsController> logger) : Controller
     {
-        private readonly TvdContext _context;
-        private readonly ILogger<NewsController> _logger;
-
-        public NewsController(TvdContext context, ILogger<NewsController> logger)
-        {
-            _context = context;
-            _logger = logger;
-        }
+        private readonly TvdContext _context = context;
+        private readonly ILogger<NewsController> _logger = logger;
 
         public IActionResult Details(int? id)
         {

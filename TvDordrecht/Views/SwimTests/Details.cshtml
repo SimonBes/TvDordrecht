@@ -1,0 +1,23 @@
+﻿@model SwimTestDetailsViewModel
+
+@{
+	ViewData["Title"] = $"Zwemtest {Model.Date.ToLongDateString()}";
+}
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Deelnemer</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var participant in Model.Participants)
+		{
+			<tr>
+				<td>1</td>
+				<td>@participant.Name</td>
+			</tr>
+		}
+	</tbody>
+</table>

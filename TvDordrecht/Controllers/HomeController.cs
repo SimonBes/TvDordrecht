@@ -6,18 +6,12 @@ using TvDordrecht.ViewModels;
 
 namespace TvDordrecht.Controllers
 {
-	public class HomeController : Controller
+	public class HomeController(TvdContext context, ILogger<HomeController> logger) : Controller
 	{
-		private readonly TvdContext _context;
-		private readonly ILogger<HomeController> _logger;
+		private readonly TvdContext _context = context;
+		private readonly ILogger<HomeController> _logger = logger;
 
-		public HomeController(TvdContext context, ILogger<HomeController> logger)
-		{
-			_context = context;
-			_logger = logger;
-		}
-
-		public IActionResult Index()
+        public IActionResult Index()
 		{
 			DateTime now = DateTime.UtcNow;
 
@@ -64,5 +58,10 @@ namespace TvDordrecht.Controllers
 
             return View(model);
 		}
-	}
+
+		public IActionResult About()
+		{
+			return View();
+		}
+    }
 }

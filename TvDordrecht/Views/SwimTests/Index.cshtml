@@ -1,0 +1,24 @@
+﻿@model List<SwimTestIndexItemViewModel>
+
+@{
+	ViewData["Title"] = "Zwemtesten";
+	ViewData["Subtitle"] = "Bepaal met een zwemtest je ideale trainingsintensiteit.";
+}
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Zwemtest</th>
+			<th scope="col">Aantal deelnemers</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (SwimTestIndexItemViewModel swimTest in Model)
+		{
+			<tr>
+				<td><a asp-controller="SwimTests" asp-action="Details" asp-route-id="@swimTest.Id">@swimTest.Date.ToLongDateString()</a></td>
+				<td>@swimTest.AmountOfParticipants</td>
+			</tr>
+		}
+	</tbody>
+</table>
